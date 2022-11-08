@@ -1,7 +1,11 @@
 "use strict";
 
+let wins = 0 , ties = 0 , losses = 0;
+
+
+
 function getComputerChoice(){
-    // randomly return either ‘Rock’, ‘Paper’ or ‘scissorss’
+    // randomly return either ‘Rock’, ‘Paper’ or ‘scissors’
     let computerSelection;
 
     let randomNumber;
@@ -32,53 +36,92 @@ function singleRound(playerSelection, computerSelection){
     if (playerSelection==="paper"){
         switch (computerSelection){
             case "paper":
-                result = "That's a draw. You both chose paper.";
+                result = "That's a tie.";
+                ties += 1;
                 break;
             case "rock":
-                result = "You won. Paper covers rock";
+                result = "You won. Paper covers rock.";
+                wins += 1;
                 break;
             case "scissors":
                 result = "You lost. Scissors cuts paper.";
+                losses += 1;
         }}
 
     if (playerSelection==="rock"){
         switch (computerSelection){
             case "paper":
                 result = "You lost. Paper covers rock.";
+                losses += 1;
                 break;
             case "rock":
-                result = "That's a draw. You both chose rock.";
+                result = "That's a tie.";
+                ties += 1;
                 break;
             case "scissors":
                 result = "You won. Rock crushes scissors.";
-        }}
+                wins += 1;
+        }
+    }
 
     if (playerSelection==="scissors"){
         switch (computerSelection){
             case "paper":
-                result = "You won. Scissors cuts paper.";
+                result = "You win. Scissors cuts paper.";
+                wins += 1;
                 break;
             case "rock":
-                result = "You won. Rock crushes scissors.";
+                result = "You lost. Rock crushes scissors.";
+                losses += 1;
                 break;
             case "scissors":
-                result = "That's a draw. You both chose scissors.";
+                result = "That's a tie.";
+                ties += 1;
+
         }}
     
         return result; 
 
     }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
 
-console.log(singleRound(playerSelection, computerSelection));
 
 
 
 function game(){
 
+    let playerSelection;
+    
+    for (let i=0; i<5; i++){
+
+        let computerSelection = getComputerChoice();
+
+
+        playerSelection = prompt("Make your choice: paper, rock or scissors?");
+
+
+
+        console.log(`Human: ${playerSelection} || Computer: ${computerSelection}`);
+        console.log(singleRound(playerSelection.toLowerCase(), computerSelection));
+        
+    }
+    console.log("-------------------------------------------------------");
+    console.log(`Wins: ${wins}, Losses: ${losses}, Ties: ${ties}`);
+
+    if (wins>losses){
+        console.log("YOU ARE THE WINNER!");
+    }
+
+    if (losses>wins){
+        console.log("THE WINNER IS... THE COMPUTER!");
+    }
+
+    if (losses===wins){
+        console.log("THIS MATCH ENDED WITHOUT A WINNER!");
+    }
+
+   
 }
 
+game();
 
-console.log(true);
