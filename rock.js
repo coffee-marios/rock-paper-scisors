@@ -37,8 +37,8 @@ function singleRound(playerSelection, computerSelection){
     let result;
     let winner; 
 
-    document.getElementById("player-photo").src = `/images/${playerSelection}.png`;
-    document.getElementById("computer-photo").src = `/images/${computerSelection}.png`;
+    document.getElementById("player-photo").src = `images/${playerSelection}.png`;
+    document.getElementById("computer-photo").src = `images/${computerSelection}.png`;
 
     /* Return the points... */
     
