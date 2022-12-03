@@ -1,7 +1,6 @@
-"use strict";
+// "use strict";
 
-let wins = 0 , ties = 0 , losses = 0;
-
+// let wins = 0 , ties = 0 , losses = 0;
 
 
 function getComputerChoice(){
@@ -27,101 +26,129 @@ function getComputerChoice(){
 
 }
 
-
+let count_score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+    };
 
 function singleRound(playerSelection, computerSelection){
     
     let result;
+    let winner; 
+
+    document.getElementById("player-photo").src = `/images/${playerSelection}.png`;
+    document.getElementById("computer-photo").src = `/images/${computerSelection}.png`;
+
+    /* Return the points... */
+    
+
+        
     
     if (playerSelection==="paper"){
         switch (computerSelection){
             case "paper":
                 result = "That's a tie.";
-                ties += 1;
+                count_score['ties'] += 1; 
                 break;
             case "rock":
-                result = "You won. Paper covers rock.";
-                wins += 1;
+                result = "Paper covers rock.";
+                count_score['wins'] += 1; 
                 break;
             case "scissors":
-                result = "You lost. Scissors cuts paper.";
-                losses += 1;
+                result = "Scissors cuts paper.";
+                count_score['losses'] += 1;
+                
         }}
 
     if (playerSelection==="rock"){
         switch (computerSelection){
             case "paper":
-                result = "You lost. Paper covers rock.";
-                losses += 1;
+                result = "Paper covers rock.";
+                count_score['losses'] += 1;
                 break;
             case "rock":
                 result = "That's a tie.";
-                ties += 1;
+                count_score['ties'] += 1; 
                 break;
             case "scissors":
-                result = "You won. Rock crushes scissors.";
-                wins += 1;
+                result = "Rock crushes scissors.";
+                count_score['wins'] += 1; 
         }
     }
 
     if (playerSelection==="scissors"){
         switch (computerSelection){
             case "paper":
-                result = "You win. Scissors cuts paper.";
-                wins += 1;
+                result = "Scissors cuts paper.";
+                count_score['wins'] += 1; 
                 break;
             case "rock":
-                result = "You lost. Rock crushes scissors.";
-                losses += 1;
+                result = "Rock crushes scissors.";
+                count_score['losses'] += 1;
                 break;
             case "scissors":
                 result = "That's a tie.";
-                ties += 1;
+                count_score['ties'] += 1; 
 
         }}
     
-        return result; 
+        console.log(count_score); 
+        document.getElementById("result").textContent = result;
+        return count_score;
 
-    }
+    } 
 
-
-
-
-
-function game(){
-
-    let playerSelection;
-    
-    for (let i=0; i<5; i++){
-
-        let computerSelection = getComputerChoice();
-
-
-        playerSelection = prompt("Make your choice: paper, rock or scissors?");
-
-
-
-        console.log(`Human: ${playerSelection} || Computer: ${computerSelection}`);
-        console.log(singleRound(playerSelection.toLowerCase(), computerSelection));
+let elements = document.querySelectorAll("button");
+for (let item of elements){
+    item.addEventListener('click', event => {
+        let player = event.target.getAttribute('data-choice');
+        let computer = getComputerChoice();
+        console.log(`The computer chose: ${computer}`);
+        singleRound(player, computer);
+        game();
+       
         
-    }
-    console.log("-------------------------------------------------------");
-    console.log(`Wins: ${wins}, Losses: ${losses}, Ties: ${ties}`);
-
-    if (wins>losses){
-        console.log("YOU ARE THE WINNER!");
-    }
-
-    if (losses>wins){
-        console.log("THE WINNER IS... THE COMPUTER!");
-    }
-
-    if (losses===wins){
-        console.log("THIS MATCH ENDED WITHOUT A WINNER!");
-    }
-
-   
+    });
 }
 
-game();
+let ourResult = document.querySelector("p");
+document.getElementById("result").textContent = "I smell blood.";
+
+function game(){
+    console.log(count_score['wins'])
+    document.getElementById("comp_points").textContent = count_score['losses'];
+    document.getElementById("hum_points").textContent = count_score['wins'];
+  
+
+    if (count_score['wins'] === 5 || count_score['losses'] === 5){
+
+        console.log('We have a winner');
+
+        if (count_score['wins'] === 5) {
+            document.getElementById("result").textContent = "The human wins!";
+        } else {
+            document.getElementById("result").textContent = "The computer wins!"
+        }
+        
+        count_score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+
+    }
+    
+
+
+}
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,158 @@
+body{
+    background-color: darkcyan;
+  /*   margin-left: 133px;
+    margin-top: 22px */
+}
+
+#app{
+    display: flex;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+
+#opponents{
+    background-color: #f33c12ef;
+    
+    min-width: 50%;
+
+}
+
+#side-player1{
+    text-align: center;
+    padding: 12px;
+}
+
+#side-player2{
+    
+    padding: 12px;
+    text-align: center;
+}
+
+
+.players{
+    display: inline;
+    font-size: 30px;
+}
+
+#computer_points{
+    text-align: right;
+}
+
+
+#comp{
+    background-color: blue;
+    
+}
+#hum{
+    background-color: red;
+    
+}
+
+div>#comp, div>#hum{
+    display: inline-block;
+    padding: 12px 12px;
+}
+
+
+
+
+#get-results{
+    background-color: yellowgreen;
+    text-align: center;
+    margin: 8px;
+    padding: 12px;
+
+}
+
+#computer-hand, #player-hand{
+    min-height: 105px;
+}
+
+#message-board{
+    margin: 12px;
+    padding: 8px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.627);
+    font-size: 25px;
+}
+
+#computer-hand{
+    -ms-transform: rotate(100deg); /* IE 9 */
+    -webkit-transform: rotate(100deg); /* Safari */
+    transform: rotate(100deg);
+}
+
+#buttons {
+    padding: 12px;
+    background-color: orange;
+    
+}
+
+button{
+    padding: 15px;
+    margin-right: 10px;
+    background-color: red;
+    border-radius: 30%;
+    border: none;
+    color: white;
+    letter-spacing: .2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+
+}
+
+button:hover {
+    background-color: red;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: green;
+    border: none;
+  }
+
+
+
+
+#human-id{
+    background-color: white;
+    padding: 5px;
+    }
+
+#computer-id{
+    background-color: white;
+    padding: 5px;
+}
+
+
+
+
+#keep_score{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding:10px;
+}
+
+table{
+
+    border-collapse: collapse;
+    font-size: 18px;
+    letter-spacing: 0.2rem;
+}
+
+tr>th, td{
+    padding: 20px;
+}
+
+td{
+    background-color: bisque;
+    text-align: center;
+}
+
+th{
+    background-color: bisque;
+}
+
+table, th, td {
+    border: 3px solid rgb(41, 39, 39);
+    
+  }
